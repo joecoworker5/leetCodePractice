@@ -1,5 +1,8 @@
 package com.cathaybk.practice.dfs;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class TargetSum {
 
 	public static void main(String[] args) {
@@ -26,4 +29,30 @@ public class TargetSum {
 			dfs(nums, index + 1, target + nums[index + 1]);
 		}
 	}
+
+    public int findTargetSumWaysBetter(int[] nums,
+                                 int target) {
+        Map<String, Integer> memo = new HashMap();
+        return dfs(nums, target, 0, memo);
+    }
+
+    int dfs(int[] nums,
+            int target,
+            int index,
+            Map<String, Integer> memo) {
+        if (memo.containsKey(target + "," + index)) {
+            return memo.get(target + "," + index);
+        }
+        if (index == nums.length && target == 0) {
+            return 1;
+        }
+        if (index == nums.length && target != 0) {
+            return 0;
+        }
+
+        int countLeft = dfs(nums, target - nums[index], index + 1, memo);
+        int countRight = dfs(nums, target + nums[index], index + 1, memo);
+        memo.put(target + "," + index, countLeft + countRight);
+        return countLeft + countRight;
+    }
 }

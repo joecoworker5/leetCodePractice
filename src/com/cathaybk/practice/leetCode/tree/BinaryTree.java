@@ -44,23 +44,24 @@ public class BinaryTree {
 	}
 
 	// iterate fail at last case
-	public List<Integer> levelorderTraversalIterate(TreeNode root) {
-		List<Integer> levelorderList = new ArrayList<>();
-		Queue<TreeNode> list = new LinkedList<>();
-		TreeNode current = root;
-		list.add(current);
-		while (list.stream().anyMatch(e -> e != null)) {
-			levelorderList.add(current != null ? current.val : null);
-			list.add(current != null ? current.left : null);
-			list.add(current != null ? current.right : null);
-			list.poll();
-			current = list.peek();
-		}
+	// public List<Integer> levelorderTraversalIterate(TreeNode root) {
+	// 	List<Integer> levelorderList = new ArrayList<>();
+	// 	Queue<TreeNode> list = new LinkedList<>();
+	// 	TreeNode current = root;
+	// 	list.add(current);
+	// 	while (list.stream().anyMatch(e -> e != null)) {
+	// 		levelorderList.add(current != null ? current.val : null);
+	// 		list.add(current != null ? current.left : null);
+	// 		list.add(current != null ? current.right : null);
+	// 		list.poll();
+	// 		current = list.peek();
+	// 	}
 
-		return levelorderList;
+	// 	return levelorderList;
 
-	}
+	// }
 
+	// iterate 
 	public static void levelOrderTraversal(TreeNode startNode) {
 		Queue<TreeNode> queue = new LinkedList<TreeNode>();
 		queue.add(startNode);
