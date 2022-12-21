@@ -44,7 +44,13 @@ bfs:
 dp:
 greedy:45(Jump Game II)(難想得出是A-1)、55（Jump Game）、53(Maximum Subarray)、134(Gas station)
 rotate: 61(Rotate List)、64(Minimum Path Sum)、 70(Climbing Stairs)、118(Pascal's Triangle)
-121(Best Time to Buy and Sell Stock)(紀錄目前最小值)、122( Best Time to Buy and Sell Stock II)(買,賣, 已買, 已賣四種狀態)
+121(Best Time to Buy and Sell Stock)(紀錄目前最小值)、122( Best Time to Buy and Sell Stock II)(買,賣, 已買, 已賣四種狀態)、309(Best Time to Buy and Sell Stock with Cooldown)
+124(Binary Tree Maximum Path Sum: 有三題類似)
+152(Maximum Product Subarray) (紀錄arr index當下的最大值和最小值（三個值做比較))
+198(House Robber)、213(House RobberII) 跟stock一樣解法
+263(Ugly Number)、283(Move Zeroes)、322( Coin Change)
+463(Island Perimeter)
+997(Find the Town Judge)
 ----
 
 
@@ -57,15 +63,15 @@ rotate: 61(Rotate List)、64(Minimum Path Sum)、 70(Climbing Stairs)、118(Pasc
 
 
 
-124(Binary Tree Maximum Path Sum: 有三題類似)
-152(Maximum Product Subarray)
-198(House Robber)
-238(Product of Array Except Self 難!)、263(Ugly Number)
-283(Move Zeroes)2
-309(Best Time to Buy and Sell Stock with Cooldown)
-322( Coin Change)
-463(Island Perimeter)
-997(Find the Town Judge)
+
+
+
+238(Product of Array Except Self 難!)
+
+
+
+
+
 1413(Minimum Value to Get Positive Step by Step Sum)
 1560(Most Visited Sector in a Circular Track)
 1905(Count Sub Islands)
