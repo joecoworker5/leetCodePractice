@@ -13,38 +13,40 @@ public class MergeIntervals {
 		System.out.println(result);
 	}
 
-	public int[][] merge(int[][] intervals) {
-		if (intervals.length == 1) {
-			return intervals;
-		}
-		Arrays.sort(intervals, new Comparator<int[]>() {
-			@Override
-			public int compare(int[] o1, int[] o2) {
-				return o1[0] - o2[0];
-			}
-		});
+    public int[][] merge(int[][] intervals) {
 
-		List<int[]> list = new ArrayList<int[]>();
-		int startIndex = intervals[0][0];
-		int endIndex = intervals[0][1];
-		for (int[] interval : intervals) {
-			if (interval[0] <= endIndex) {
-				endIndex = interval[1] > endIndex ? interval[1] : endIndex;
-			} else {
-				int[] newInterval = new int[2];
-				newInterval[0] = startIndex;
-				newInterval[1] = endIndex;
-				list.add(newInterval);
-				startIndex = interval[0];
-				endIndex = interval[1];
-			}
-		}
-		int[] finalInterval = new int[2];
-		finalInterval[0] = startIndex;
-		finalInterval[1] = endIndex;
-		list.add(finalInterval);
+        if(intervals.length==1){
+            return intervals;
+        }
 
-		return list.toArray(new int[list.size()][2]);
+        // >0 才swap
+        Arrays.sort(intervals, new Comparator<int[]>() {
+            @Override
+            public int compare(int[] o1,
+                               int[] o2) {
+                return o1[0]-o2[0];
+            }
+        });
 
-	}
+        List<int[]> result = new ArrayList();
+
+        int beginIndex = intervals[0][0];
+        int lastIndex = intervals[0][1];
+        for(int i=1; i<intervals.length; i++){
+            int[] interval = intervals[i];
+            if(interval[0]>lastIndex){
+                int[] range= {beginIndex, lastIndex};
+                result.add(range);
+                beginIndex = interval[0];
+                lastIndex = interval[1];
+            } else {
+                lastIndex = Math.max(lastIndex, interval[1]);
+            }
+            if(i==intervals.length-1) {
+                int[] finalRange = {beginIndex, lastIndex};
+                result.add(finalRange);
+            };
+        }
+        return result.toArray(new int[result.size()][2]);
+    }
 }

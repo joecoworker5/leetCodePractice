@@ -14,7 +14,7 @@ non-overlapping interval、741、1054、300(354)
 
 分類
 Tree: 
-33(Search in Rotated Sorted Array)、34(Find First and Last Position of Element in Sorted Array)、35(Search Insert Position)
+34(Find First and Last Position of Element in Sorted Array)、35(Search Insert Position)
 94(Binary Tree Inorder Traversal/DFS and BFS)、98(Validate Binary Search Tree)、 99(Recover Binary Search Tree)、100(Same Tree)、101(Symmetric Tree)、
 102(Binary Tree Level Order Traversal)、104(Maximum Depth of Binary Tree)、107(Binary Tree Level Order Traversal II)、108(Convert Sorted Array to Binary Search Tree)、112(Path Sum)、113(113. Path Sum II)、114(Flatten Binary Tree to Linked List)、116(Populating Next Right Pointers in Each Node)
 199(Binary Tree Right Side View)、226(Invert Binary Tree)、429(N-ary Tree Level Order Traversal)
@@ -31,8 +31,12 @@ Hash:
 LinkedList : 
 2(Add Two Numbers)、19(Remove Nth Node From End of List)、21(Merge Two Sorted Lists)、24(Swap Nodes in Pairs)、61(Rotate List)、160(Intersection of Two Linked Lists)、 206(Reverse Linked List)、234(Palindrome Linked List:fast and slow/ reverse)
 
-dfs: 
+ 
 ----
+Tree: 
+33(Search in Rotated Sorted Array)
+
+dfs:
 14(Longest Common Prefix),17(Letter Combinations of a Phone Number)、22(Generate Parentheses)、97(interleaving String tabulation)
 39(Combination Sum:distinct)　40(Combination Sum II: non-distinct→sorted)
 46（Permutations）、47（Permutations II, non-distinct→sorted,  if(i>0 &&nums[i-1]==nums[i] && !used[i-1]) continue;)、62(Unique Paths)、63(Unique Paths II)、78(Subsets)、79(Word Search)、118(Pascal's Triangle)、120(Triangle)、128(Longest Consecutive Sequence)、130(Surrounded Regions)、133(Clone Graph)、139(Word Break)、200(Number of Islands)207、(Course Schedule)、210(Course Schedule II)、399(Evaluate Division)(DAG topological sort)、221(Maximal Square)、240(Search a 2D Matrix II)、263(Ugly Number)、322( Coin Change)、494(Target Sum)、733(Flood Fill)、841(Keys and Rooms)
@@ -46,11 +50,44 @@ greedy:45(Jump Game II)(難想得出是A-1)、55（Jump Game）、53(Maximum Sub
 rotate: 61(Rotate List)、64(Minimum Path Sum)、 70(Climbing Stairs)、118(Pascal's Triangle)
 121(Best Time to Buy and Sell Stock)(紀錄目前最小值)、122( Best Time to Buy and Sell Stock II)(買,賣, 已買, 已賣四種狀態)、309(Best Time to Buy and Sell Stock with Cooldown)
 124(Binary Tree Maximum Path Sum: 有三題類似)
-152(Maximum Product Subarray) (紀錄arr index當下的最大值和最小值（三個值做比較))
+152(Maximum Product Subarray) (紀錄arr index當下的最大值和最小值（三個值 做比較))
 198(House Robber)、213(House RobberII) 跟stock一樣解法
 263(Ugly Number)、283(Move Zeroes)、322( Coin Change)
 463(Island Perimeter)
 997(Find the Town Judge)
+1413(Minimum Value to Get Positive Step by Step Sum)
+1560(Most Visited Sector in a Circular Track)
+1905(Count Sub Islands)
+238(Product of Array Except Self 難!)
+
+Sort:
+56(Merge Intervals)、57(Insert Interval)、435(Non-overlapping Intervals)、75(Sort Colors)、
+、215(Kth Largest Element in an Array)
+
+Queue: 
+3( Longest Substring Without Repeating Characters)
+
+
+Priority Q(heap):
+1962(Remove Stones to Minimize the Total)
+347(Top K Frequent Elements)
+
+Union find: 
+200(Number of Islands)(有趣)
+
+Two Pointer
+5(Longest Palindromic Substring),9(Longest Palindromic Substring),11(Container With Most Water)
+、 15(3Sum)、647(Palindromic Substrings)
+
+slow and fast: 141(Linked List Cycle)、142(Linked List Cycle II)、234(Palindrome Linked List:fast and slow/ reverse)、287(Find the Duplicate Number)
+
+Stack: 20(Valid Parentheses)、
+
+Array:
+300(Longest Increasing Subsequence)(難:看不懂)
+1054(Distant Barcodes)
+
+Other: 169(Majority Element)
 ----
 
 
@@ -66,34 +103,16 @@ rotate: 61(Rotate List)、64(Minimum Path Sum)、 70(Climbing Stairs)、118(Pasc
 
 
 
-238(Product of Array Except Self 難!)
 
 
-
-
-
-1413(Minimum Value to Get Positive Step by Step Sum)
-1560(Most Visited Sector in a Circular Track)
-1905(Count Sub Islands)
-
-Sort:
-56(Merge Intervals)、57(Insert Interval)、435(Non-overlapping Intervals)、75(Sort Colors)、
-148(Sort List:難 mergesort)、215(Kth Largest Element in an Array)
+148(Sort List:難 mergesort)
 912(Sort an Array: 難 mergesort)
 
 topological sort
 
-Queue: 
-3( Longest Substring Without Repeating Characters)
-
-
-Priority Q(heap):
-1962(Remove Stones to Minimize the Total)
-347(Top K Frequent Elements)
 23(Merge k Sorted Lists)
 
-Union find: 
-200(Number of Islands)
+
 
 Set
 1695(Maximum Erasure Value)
@@ -106,18 +125,8 @@ Add and Search Word
 211(Design Add and Search Words Data Structure)
 208(Implement Trie)
 
-Two pointer: 
-5(Longest Palindromic Substring), 9(Longest Palindromic Substring), 11(Container With Most Water)、 15(3Sum)
-slow and fast: 141(Linked List Cycle)、142(Linked List Cycle II)、234(Palindrome Linked List:fast and slow/ reverse)、287(Find the Duplicate Number)
-647(Palindromic Substrings)
 
-Stack: 20(Valid Parentheses)、152(Maximum Product Subarray)
-
-Other: 48(Rotate Image)、169(Majority Element)、189(Rotate Array)、1886(Determine Whether Matrix Can Be Obtained By Rotation)
-
-Array:
-300(Longest Increasing Subsequence)
-1054(Distant Barcodes)
+Other: 48(Rotate Image)、189(Rotate Array)、1886(Determine Whether Matrix Can Be Obtained By Rotation)
 
 Question: 518(Coin Change 2)、494(Target Sum: dp)
 
