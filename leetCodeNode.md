@@ -14,15 +14,7 @@ non-overlapping interval、741、1054、300(354)
 
 分類
 Tree: 
-34(Find First and Last Position of Element in Sorted Array)、35(Search Insert Position)
-94(Binary Tree Inorder Traversal/DFS and BFS)、98(Validate Binary Search Tree)、 99(Recover Binary Search Tree)、100(Same Tree)、101(Symmetric Tree)、
-102(Binary Tree Level Order Traversal)、104(Maximum Depth of Binary Tree)、107(Binary Tree Level Order Traversal II)、108(Convert Sorted Array to Binary Search Tree)、112(Path Sum)、113(113. Path Sum II)、114(Flatten Binary Tree to Linked List)、116(Populating Next Right Pointers in Each Node)
-199(Binary Tree Right Side View)、226(Invert Binary Tree)、429(N-ary Tree Level Order Traversal)
-230(Kth Smallest Element in a BST)、501(Find Mode in Binary Search Tree)
-543(Diameter of Binary Tree,有三種類似題型)687(Longest Univalue Path)
-617(Merge Two Binary Trees)、637(Average of Levels in Binary Tree)
-700(Search in a Binary Search Tree)、814(Binary Tree Pruning)
-1022(Sum of Root To Leaf Binary Numbers)
+
 968(Binary Tree Cameras)、979(Distribute Coins in Binary Tree)
 
 Hash: 
@@ -34,7 +26,8 @@ LinkedList :
  
 ----
 Tree: 
-33(Search in Rotated Sorted Array)
+33(Search in Rotated Sorted Array)、34(Find First and Last Position of Element in Sorted Array)、35(Search Insert Position)、94(Binary Tree Inorder Traversal/DFS and BFS)、98(Validate Binary Search Tree)、99(Recover Binary Search Tree)、100(Same Tree)、102(Binary Tree Level Order Traversal)、104(Maximum Depth of Binary Tree)、107(Binary Tree Level Order Traversal II)、108(Convert Sorted Array to Binary Search Tree)、112(Path Sum)、101(Symmetric Tree)、113(113. Path Sum II)、114(Flatten Binary Tree to Linked List)、116(Populating Next Right Pointers in Each Node)、199(Binary Tree Right Side View)、226(Invert Binary Tree)、429(N-ary Tree Level Order Traversal)、230(Kth Smallest Element in a BST)、501(Find Mode in Binary Search Tree)
+543(Diameter of Binary Tree,有三種類似題型)、687(Longest Univalue Path)、617(Merge Two Binary Trees)、637(Average of Levels in Binary Tree)、700(Search in a Binary Search Tree)、814(Binary Tree Pruning)、1022(Sum of Root To Leaf Binary Numbers)(每次都想不到xdd)
 
 dfs:
 14(Longest Common Prefix),17(Letter Combinations of a Phone Number)、22(Generate Parentheses)、97(interleaving String tabulation)

@@ -1,4 +1,4 @@
-package com.cathaybk.practice.leetCode.tree;
+package com.cathaybk.practice.tree;
 
 import java.util.ArrayList;
 import java.util.List;
