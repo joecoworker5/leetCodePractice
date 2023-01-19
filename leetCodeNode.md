@@ -14,32 +14,38 @@ non-overlapping interval、741、1054、300(354)
 
 分類
 Tree: 
+968(Binary Tree Cameras)
 
-968(Binary Tree Cameras)、979(Distribute Coins in Binary Tree)
-
-Hash: 
-1(Two Sum),13(Roman to Integer)、49(Group Anagrams)、128(Longest Consecutive Sequence)、299(Bulls and Cows)
 
 LinkedList : 
 2(Add Two Numbers)、19(Remove Nth Node From End of List)、21(Merge Two Sorted Lists)、24(Swap Nodes in Pairs)、61(Rotate List)、160(Intersection of Two Linked Lists)、 206(Reverse Linked List)、234(Palindrome Linked List:fast and slow/ reverse)
 
  
 ----
+Hash: 
+1(Two Sum)、13(Roman to Integer)、128(Longest Consecutive Sequence)、299(Bulls and Cows)
+387(First Unique Character in a String)、454(4Sum II)
+
+LinkedList:
+328(Odd Even Linked List)
+
+
 Tree: 
 33(Search in Rotated Sorted Array)、34(Find First and Last Position of Element in Sorted Array)、35(Search Insert Position)、94(Binary Tree Inorder Traversal/DFS and BFS)、98(Validate Binary Search Tree)、99(Recover Binary Search Tree)、100(Same Tree)、102(Binary Tree Level Order Traversal)、104(Maximum Depth of Binary Tree)、107(Binary Tree Level Order Traversal II)、108(Convert Sorted Array to Binary Search Tree)、112(Path Sum)、101(Symmetric Tree)、113(113. Path Sum II)、114(Flatten Binary Tree to Linked List)、116(Populating Next Right Pointers in Each Node)、199(Binary Tree Right Side View)、226(Invert Binary Tree)、429(N-ary Tree Level Order Traversal)、230(Kth Smallest Element in a BST)、501(Find Mode in Binary Search Tree)
-543(Diameter of Binary Tree,有三種類似題型)、687(Longest Univalue Path)、617(Merge Two Binary Trees)、637(Average of Levels in Binary Tree)、700(Search in a Binary Search Tree)、814(Binary Tree Pruning)、1022(Sum of Root To Leaf Binary Numbers)(每次都想不到xdd)
+543(Diameter of Binary Tree,有三種類似題型)、687(Longest Univalue Path)、617(Merge Two Binary Trees)、637(Average of Levels in Binary Tree)、700(Search in a Binary Search Tree)、814(Binary Tree Pruning)、1022(Sum of Root To Leaf Binary Numbers)(每次都想不到xdd)、979(Distribute Coins in Binary Tree)
+105(Construct Binary Tree from Preorder and Inorder Traversal)
 
 dfs:
 14(Longest Common Prefix),17(Letter Combinations of a Phone Number)、22(Generate Parentheses)、97(interleaving String tabulation)
 39(Combination Sum:distinct)　40(Combination Sum II: non-distinct→sorted)
-46（Permutations）、47（Permutations II, non-distinct→sorted,  if(i>0 &&nums[i-1]==nums[i] && !used[i-1]) continue;)、62(Unique Paths)、63(Unique Paths II)、78(Subsets)、79(Word Search)、118(Pascal's Triangle)、120(Triangle)、128(Longest Consecutive Sequence)、130(Surrounded Regions)、133(Clone Graph)、139(Word Break)、200(Number of Islands)207、(Course Schedule)、210(Course Schedule II)、399(Evaluate Division)(DAG topological sort)、221(Maximal Square)、240(Search a 2D Matrix II)、263(Ugly Number)、322( Coin Change)、494(Target Sum)、733(Flood Fill)、841(Keys and Rooms)
+46（Permutations）、47（Permutations II, non-distinct→sorted,  if(i>0 &&nums[i-1]==nums[i] && !used[i-1]) continue;)、62(Unique Paths)、63(Unique Paths II)、78(Subsets)、79(Word Search)、118(Pascal's Triangle)、120(Triangle)、128(Longest Consecutive Sequence)、130(Surrounded Regions)、133(Clone Graph)、139(Word Break)、200(Number of Islands)207、(Course Schedule)、210(Course Schedule II)、399(Evaluate Division)(DAG topological sort)、221(Maximal Square)、240(Search a 2D Matrix II)、263(Ugly Number)、322( Coin Change)、494(Target Sum)、733(Flood Fill)、841(Keys and Rooms)、2244(Minimum Rounds to Complete All Tasks)、326(Power of Three)、394(Decode String)
 
 bfs:
 133(Clone Graph)、1162(As Far from Land as Possible)
 、785(Is Graph Bipartite?) 題目蠻有趣
 、886(Possible Bipartition)
 dp:
-greedy:45(Jump Game II)(難想得出是A-1)、55（Jump Game）、53(Maximum Subarray)、134(Gas station)
+greedy:45(Jump Game II)(難想得出是A-1)、55（Jump Game）、53(Maximum Subarray)、134(Gas station)、334(Increasing Triplet Subsequence 好難想...)
 rotate: 61(Rotate List)、64(Minimum Path Sum)、 70(Climbing Stairs)、118(Pascal's Triangle)
 121(Best Time to Buy and Sell Stock)(紀錄目前最小值)、122( Best Time to Buy and Sell Stock II)(買,賣, 已買, 已賣四種狀態)、309(Best Time to Buy and Sell Stock with Cooldown)
 124(Binary Tree Maximum Path Sum: 有三題類似)
@@ -52,18 +58,30 @@ rotate: 61(Rotate List)、64(Minimum Path Sum)、 70(Climbing Stairs)、118(Pasc
 1560(Most Visited Sector in a Circular Track)
 1905(Count Sub Islands)
 238(Product of Array Except Self 難!)
+42(Trapping Rain Water 難,但超經典有三種解法)
 
 Sort:
 56(Merge Intervals)、57(Insert Interval)、435(Non-overlapping Intervals)、75(Sort Colors)、
-、215(Kth Largest Element in an Array)
+、215(Kth Largest Element in an Array)、452. Minimum Number of Arrows to Burst Balloons、
+88(Merge Sorted Array)
+179(Largest Number)
+
 
 Queue: 
 3( Longest Substring Without Repeating Characters)
 
 
+
 Priority Q(heap):
 1962(Remove Stones to Minimize the Total)
 347(Top K Frequent Elements)
+239 (Sliding Window Maximum 難 可以先從pq思考, 後面再自己用deque實作monotonic Queue試試看)
+378(Kth Smallest Element in a Sorted Matrix, 其實最好的解法是 binary search 但太難無法理解)
+451(Sort Characters By Frequency)
+
+Deque實作monotonic Queue
+239 (Sliding Window Maximum 難 可以先從pq思考, 後面再自己用deque實作monotonic Queue試試看)
+
 
 Union find: 
 200(Number of Islands)(有趣)
@@ -71,6 +89,9 @@ Union find:
 Two Pointer
 5(Longest Palindromic Substring),9(Longest Palindromic Substring),11(Container With Most Water)
 、 15(3Sum)、647(Palindromic Substrings)
+42(Trapping Rain Water 難,但超經典有三種解法)
+88(Merge Sorted Array)
+350(Intersection of Two Arrays II)
 
 slow and fast: 141(Linked List Cycle)、142(Linked List Cycle II)、234(Palindrome Linked List:fast and slow/ reverse)、287(Find the Duplicate Number)
 
@@ -78,9 +99,20 @@ Stack: 20(Valid Parentheses)、
 
 Array:
 300(Longest Increasing Subsequence)(難:看不懂)
-1054(Distant Barcodes)
-
+1054(Distant Barcodes)、1833. Maximum Ice Cream Bars
+66(PlusOne)
+162(Find Peak Element O(N)很簡單但要求 O(logN))
+171(Excel Sheet Column Number)
+289(Game of Life)
+350(Intersection of Two Arrays II)
 Other: 169(Majority Element)
+
+Structure design:
+380(Insert Delete GetRandom O(1), Map<Integer, Integer> +List)
+381(Insert Delete GetRandom O(1) - Duplicates allowed 困難!但蠻有趣的 Map<Integer, Set<Integer>> +List)
+384(Shuffle an Array, shuffle random array)
+146(LRU Cache: linkedHashMap)
+
 ----
 
 

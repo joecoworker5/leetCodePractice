@@ -1,4 +1,4 @@
-package com.cathaybk.practice.leetCode.tree;
+package com.cathaybk.practice.tree;
 
 public class DistributeCoinsinBinaryTree {
 
@@ -32,4 +32,26 @@ public class DistributeCoinsinBinaryTree {
 
 		return leftCoin + rightCoin + root.val - 1;
 	}
+
+
+
+	// simple solution
+	int move = 0;
+
+    public int distributeCoinsSimple(TreeNode root) {
+        dfs(root);
+        return move;
+    }
+
+    int dfsSimple(TreeNode node) {
+        if (node == null) {
+            return 0;
+        }
+
+        int left = dfsSimple(node.left);
+        int right = dfsSimple(node.right);
+        int totalCoins = node.val + left + right;
+        move += Math.abs(totalCoins - 1);
+        return totalCoins - 1;
+    }
 }
