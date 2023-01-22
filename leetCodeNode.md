@@ -96,6 +96,7 @@ Two Pointer
 slow and fast: 141(Linked List Cycle)、142(Linked List Cycle II)、234(Palindrome Linked List:fast and slow/ reverse)、287(Find the Duplicate Number)
 
 Stack: 20(Valid Parentheses)、
+496(Next Greater Element I)、739(Daily Temperatures: 和496解題邏輯類似)
 
 Array:
 300(Longest Increasing Subsequence)(難:看不懂)
