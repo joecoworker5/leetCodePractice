@@ -1,36 +1,37 @@
 package com.cathaybk.practice.dfs;
 
-import com.cathaybk.practice.leetCode.tree.TreeNode;
+import java.util.ArrayList;
+import java.util.List;
 
 public class BinaryTreeMaximumPathSum {
 
-	public static void main(String[] args) {
-		TreeNode root = new TreeNode(1);
-		root.left = new TreeNode(2);
-		root.right = new TreeNode(3);
-		int result = new BinaryTreeMaximumPathSum().maxPathSum(root);
-		System.out.println(result);
-	}
+    Long minFuelCost = 0L;
+    public long minimumFuelCost(int[][] roads, int seats) {
+        int cityNum = roads.length + 1;
+        List<List<Integer>> graph = new ArrayList<>();
+        for(int i=0; i<cityNum; i++){
+            graph.add(i, new ArrayList<Integer>());
+        }
 
-	int maxPathSum = Integer.MIN_VALUE;
+        for(int[] road : roads){
+            graph.get(road[0]).add(road[1]);
+            graph.get(road[1]).add(road[0]);
+        }
 
-	public int maxPathSum(TreeNode root) {
+        dfs(0, 0, graph, seats);
+        return minFuelCost;
 
-		if (root.left == null && root.right == null) {
-			return root.val;
-		}
-		dfs(root);
-		return maxPathSum;
-	}
+    }
 
-	int dfs(TreeNode node) {
-		if (node == null) {
-			return 0;
-		}
-		int left = dfs(node.left);
-		int right = dfs(node.right);
+    int dfs(int city, int prevCity, List<List<Integer>> graph, int seats){
+        int people = 1;
+        for(int c : graph.get(city)){
+            if (c== prevCity) continue;
+            people += dfs(c, city, graph, seats);
+        }
 
-		maxPathSum = Math.max(maxPathSum, node.val + (left > 0 ? left : 0) + (right > 0 ? right : 0));
-		return Math.max(node.val, node.val + Math.max(right, left));
-	}
+        if(city!=0) minFuelCost += people/seats + ((people%seats!=0)?1:0);
+
+        return people;
+    }
 }

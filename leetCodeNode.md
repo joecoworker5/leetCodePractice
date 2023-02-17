@@ -24,10 +24,16 @@ LinkedList :
 ----
 Hash: 
 1(Two Sum)、13(Roman to Integer)、128(Longest Consecutive Sequence)、299(Bulls and Cows)
-387(First Unique Character in a String)、454(4Sum II)
+387(First Unique Character in a String)、454(4Sum II)、560(Subarray Sum Equals K 好題目，由brutal force來聯想解法)
+567(Permutation in String: sliding window)
 
 LinkedList:
 328(Odd Even Linked List)
+
+Ｓliding Window(通常用queue, monotonic Queue 來解決):
+567(Permutation in String: sliding window)
+438 (Find All Anagrams in a String, 這題和 567 基本一模ㄧ樣)
+239 (Sliding Window Maximum 難 可以先從pq思考, 後面再自己用deque實作monotonic Queue試試看)
 
 
 Tree: 
@@ -39,6 +45,7 @@ dfs:
 14(Longest Common Prefix),17(Letter Combinations of a Phone Number)、22(Generate Parentheses)、97(interleaving String tabulation)
 39(Combination Sum:distinct)　40(Combination Sum II: non-distinct→sorted)
 46（Permutations）、47（Permutations II, non-distinct→sorted,  if(i>0 &&nums[i-1]==nums[i] && !used[i-1]) continue;)、62(Unique Paths)、63(Unique Paths II)、78(Subsets)、79(Word Search)、118(Pascal's Triangle)、120(Triangle)、128(Longest Consecutive Sequence)、130(Surrounded Regions)、133(Clone Graph)、139(Word Break)、200(Number of Islands)207、(Course Schedule)、210(Course Schedule II)、399(Evaluate Division)(DAG topological sort)、221(Maximal Square)、240(Search a 2D Matrix II)、263(Ugly Number)、322( Coin Change)、494(Target Sum)、733(Flood Fill)、841(Keys and Rooms)、2244(Minimum Rounds to Complete All Tasks)、326(Power of Three)、394(Decode String)
+2477(Minimum Fuel Cost to Report to the Capital)
 
 bfs:
 133(Clone Graph)、1162(As Far from Land as Possible)
@@ -46,6 +53,8 @@ bfs:
 、886(Possible Bipartition)
 dp:
 greedy:45(Jump Game II)(難想得出是A-1)、55（Jump Game）、53(Maximum Subarray)、134(Gas station)、334(Increasing Triplet Subsequence 好難想...)
+763(Partition Labels)
+
 rotate: 61(Rotate List)、64(Minimum Path Sum)、 70(Climbing Stairs)、118(Pascal's Triangle)
 121(Best Time to Buy and Sell Stock)(紀錄目前最小值)、122( Best Time to Buy and Sell Stock II)(買,賣, 已買, 已賣四種狀態)、309(Best Time to Buy and Sell Stock with Cooldown)
 124(Binary Tree Maximum Path Sum: 有三題類似)
