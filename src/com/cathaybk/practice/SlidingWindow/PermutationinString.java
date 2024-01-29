@@ -1,4 +1,4 @@
-package com.cathaybk.practice.monotonicQueue;
+package com.cathaybk.practice.SlidingWindow;
 
 import java.util.Deque;
 import java.util.PriorityQueue;

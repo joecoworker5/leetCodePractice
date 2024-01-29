@@ -1,54 +1,49 @@
 package com.cathaybk.practice.dp;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.PriorityQueue;
+import java.util.Queue;
+
 public class TaskScheduler {
-
-	public static void main(String[] args) {
-		int[] prices = {7,1,5,49,0,50};
-		int maxProfit = new BestTimetoBuyandSellStock().maxProfit(prices);
-		System.out.println(maxProfit);
-	}
-
-	public int maxProfit(int[] prices) {
-		int maxProfit = 0;
-		int max = 0;
-		int maxIndex = 0;
-		int min = Integer.MAX_VALUE;
-		int minIndex = 0;
-
-		for (int i = 0; i < prices.length; i++) {
-			if (prices[i] < min) {
-				min = prices[i];
-				minIndex = i;
-			}
-			if (maxIndex <= minIndex || prices[i] > max) {
-				max = prices[i];
-				maxIndex = i;
-			}
-
-			if (maxIndex > minIndex) {
-				maxProfit = Math.max(max - min, maxProfit);
-			}
-
-		}
-
-		return maxProfit;
-	}
-
-	public int maxProfitSimpler(int[] prices) {
-        if(prices.length==0){
-            return 0;
+	public int leastInterval(char[] tasks, int n) {
+        Map<Character, Integer> map = new HashMap<>();
+        for(char t: tasks){
+            map.put(t, map.getOrDefault(t, 0)+1);
         }
-        int max = 0;
-        int soFarMin = prices[0];
-        for(int i=1; i<prices.length; i++){
-            if(prices[i]<soFarMin){
-                soFarMin = prices[i];
+
+        Queue<Map.Entry<Character, Integer>> q = new PriorityQueue<>(new Comparator<Map.Entry<Character, Integer>>() {
+            @Override
+            public int compare(Map.Entry<Character, Integer> o1,
+                               Map.Entry<Character, Integer> o2) {
+                return o2.getValue() - o1.getValue();
+            }
+        });
+
+        for(Map.Entry e : map.entrySet()){
+            q.add(e);
+        }
+        Map.Entry<Character, Integer> maxEntry = q.poll();
+        int maxCount = maxEntry.getValue();
+        int minTasksUnitSoFar = (maxCount - 1)*n + maxCount;
+        int vacancySoFar = (maxCount - 1)*n;
+        while(!q.isEmpty()){
+            Map.Entry<Character, Integer> poll = q.poll();
+            if(vacancySoFar!=0){
+                if(maxCount == poll.getValue()){
+                    vacancySoFar -= poll.getValue() - 1;
+                    minTasksUnitSoFar++;
+                } else {
+                    vacancySoFar -= poll.getValue();
+                }
             } else {
-                max = Math.max(max, prices[i]-soFarMin);
+                minTasksUnitSoFar += poll.getValue();
             }
         }
-
-        return max;
+        if(vacancySoFar<0){
+            return minTasksUnitSoFar - vacancySoFar;
+        }
+        return minTasksUnitSoFar;
     }
 
 }
