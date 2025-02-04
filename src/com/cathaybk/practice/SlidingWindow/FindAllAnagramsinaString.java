@@ -1,4 +1,4 @@
-package com.cathaybk.practice.monotonicQueue;
+package com.cathaybk.practice.SlidingWindow;
 
 import java.util.ArrayList;
 import java.util.Deque;
