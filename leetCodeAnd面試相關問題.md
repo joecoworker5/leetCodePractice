@@ -42,10 +42,11 @@ LinkedList :
 21(Merge Two Sorted Lists) -> 21的進階版, 148(Sort List:難 mergesort, 偷懶可以用priorityQueue(heap sort)但效能沒那麼好)
 19(Remove Nth Node From End of List)
 234(Palindrome Linked List:fast and slow/ reverse)
-206(Reverse Linked List)
+206(Reverse Linked List)、92(Reverse Linked List II)
 160(Intersection of Two Linked Lists)
 24(Swap Nodes in Pairs)
 61(Rotate List)
+328(Odd Even Linked List)
 
 Hash: 
 1(Two Sum)、13(Roman to Integer)、128(Longest Consecutive Sequence)、299(Bulls and Cows)
@@ -53,8 +54,6 @@ Hash:
 567(Permutation in String: sliding window)
 2131(Longest Palindrome by Concatenating Two Letter Words)
 
-LinkedList:
-328(Odd Even Linked List)
 
 Ｓliding Window(通常用queue, monotonic Queue 來解決):
 567(Permutation in String: sliding window)
@@ -64,9 +63,13 @@ LinkedList:
 658(Find K Closest Elements)
 
 Tree: 
-33(Search in Rotated Sorted Array)、34(Find First and Last Position of Element in Sorted Array)、35(Search Insert Position)、94(Binary Tree Inorder Traversal/DFS and BFS)、98(Validate Binary Search Tree)、99(Recover Binary Search Tree)、100(Same Tree)、102(Binary Tree Level Order Traversal)、104(Maximum Depth of Binary Tree)、107(Binary Tree Level Order Traversal II)、108(Convert Sorted Array to Binary Search Tree)、112(Path Sum)、101(Symmetric Tree)、113(113. Path Sum II)、114(Flatten Binary Tree to Linked List)、116(Populating Next Right Pointers in Each Node)、199(Binary Tree Right Side View)、226(Invert Binary Tree)、429(N-ary Tree Level Order Traversal)、230(Kth Smallest Element in a BST)、501(Find Mode in Binary Search Tree)
+33(Search in Rotated Sorted Array)、34(Find First and Last Position of Element in Sorted Array)、35(Search Insert Position)、94(Binary Tree Inorder Traversal/DFS and BFS)、98(Validate Binary Search Tree)、99(Recover Binary Search Tree)、100(Same Tree)、102(Binary Tree Level Order Traversal)、104(Maximum Depth of Binary Tree)、107(Binary Tree Level Order Traversal II)、108(Convert Sorted Array to Binary Search Tree)、101(Symmetric Tree)
+112(Path Sum)、113(113. Path Sum II)、437(Path Sum III:難想two sum + recursion)
+114(Flatten Binary Tree to Linked List)、116(Populating Next Right Pointers in Each Node)、199(Binary Tree Right Side View)、226(Invert Binary Tree)、429(N-ary Tree Level Order Traversal)、230(Kth Smallest Element in a BST)、501(Find Mode in Binary Search Tree)
 543(Diameter of Binary Tree,有三種類似題型)、687(Longest Univalue Path)、617(Merge Two Binary Trees)、637(Average of Levels in Binary Tree)、700(Search in a Binary Search Tree)、814(Binary Tree Pruning)、1022(Sum of Root To Leaf Binary Numbers)(每次都想不到xdd)、979(Distribute Coins in Binary Tree)
 105(Construct Binary Tree from Preorder and Inorder Traversal)
+104(Maximum Depth of Binary Tree)->進階題 110(Balanced Binary Tree)
+1011(Capacity To Ship Packages Within D Days:binary search)
 
 dfs:
 14(Longest Common Prefix),17(Letter Combinations of a Phone Number)、22(Generate Parentheses)、97(interleaving String tabulation)
@@ -74,6 +77,7 @@ dfs:
 46（Permutations）、47（Permutations II, non-distinct→sorted,  if(i>0 &&nums[i-1]==nums[i] && !used[i-1]) continue;)、62(Unique Paths)、63(Unique Paths II)、78(Subsets)、79(Word Search)、118(Pascal's Triangle)、120(Triangle)、128(Longest Consecutive Sequence)、130(Surrounded Regions)、133(Clone Graph)、139(Word Break)、200(Number of Islands)207、(Course Schedule)、210(Course Schedule II)、399(Evaluate Division)(DAG topological sort)、221(Maximal Square)、240(Search a 2D Matrix II)、263(Ugly Number)、322( Coin Change)、494(Target Sum)、733(Flood Fill)、841(Keys and Rooms)、2244(Minimum Rounds to Complete All Tasks)、326(Power of Three)、394(Decode String)
 2477(Minimum Fuel Cost to Report to the Capital)
 1706(Where Will the Ball Fall)
+947(Most Stones Removed with Same Row or Column)
 
 bfs:
 133(Clone Graph)、1162(As Far from Land as Possible)
@@ -123,6 +127,7 @@ Deque實作monotonic Queue
 
 Union find: 
 200(Number of Islands)(有趣)
+547(Number of Provinces)
 
 Two Pointer
 5(Longest Palindromic Substring),9(Longest Palindromic Substring),11(Container With Most Water)
@@ -135,6 +140,7 @@ slow and fast: 141(Linked List Cycle)、142(Linked List Cycle II)、234(Palindro
 
 Stack: 20(Valid Parentheses)、
 496(Next Greater Element I)、739(Daily Temperatures: 和496解題邏輯類似)
+735(Asteroid Collision)
 
 Array:
 300(Longest Increasing Subsequence)(難:看不懂)
@@ -144,17 +150,26 @@ Array:
 171(Excel Sheet Column Number)
 289(Game of Life)
 350(Intersection of Two Arrays II)
+540(Single Element in a Sorted Array)、33(Search in Rotated Sorted Array)基本上看到sorted array就要想到 binary Search
 Other: 169(Majority Element)
+
 
 Structure design:
 380(Insert Delete GetRandom O(1), Map<Integer, Integer> +List)
 381(Insert Delete GetRandom O(1) - Duplicates allowed 困難!但蠻有趣的 Map<Integer, Set<Integer>> +List)
 384(Shuffle an Array, shuffle random array)
 146(LRU Cache: linkedHashMap)
+173(Binary Search Tree Iterator)
+232(Implement Queue using Stacks)
+155(Min Stack)
+208(Implement Trie (Prefix Tree))
 
 
 Math:
 1071(Greatest Common Divisor of Strings: 輾轉相除法)
+
+Graph:
+1443(Minimum Time to Collect All Apples in a Tree)
 
 
 # 演算法筆記
@@ -230,7 +245,7 @@ void BinaryTree::Inorder_by_parent(TreeNode *root){
 }
 
 
-bfs/queue: level order traversal
+### bfs/queue: level order traversal
 
 ### Binary Search Tree: Binary Tree再增加「鍵值(Key)大小規則」(i.e. Key(L)<Key(Current)<Key(R)) : inorder traversal即可得到小到大的排序
 ### Red Black Tree(RBT，紅黑樹: BST為基礎，在每個node上添加顏色(紅與黑)用以平衡樹的height，以減短搜尋時間LogN，RBT可以被視為如同Complete Binary Tree的BST
@@ -292,15 +307,47 @@ HashMap: 底層為 Entry[], default size = 16, loading factor = 0.75, 當發生k
 ConcurrentHashMap: thread-safe, 他底層基本概念為分成好多個segment, 每個segment可視為hashMap, 不同thread操作不同segment, 所以為thread safe
 
 
-# 網路相關
-### WebSocket
-WebSocket: https://medium.com/enjoy-life-enjoy-coding/javascript-websocket-%E8%AE%93%E5%89%8D%E5%BE%8C%E7%AB%AF%E6%B2%92%E6%9C%89%E8%B7%9D%E9%9B%A2-34536c333e1b
+# 網路相關問題
+https://blog.csdn.net/weixin_43122090/article/details/105462015 幾乎全包了
 
-### HTTP
+### 網路根據 OSI模型分七層／根據TCP/IP模型分四層, 其中 TCP/UDP是傳輸層, 而HTTP, HTTPS, SMTP, FTP則是基於傳輸層為基礎的應用層
 
-### TCP
+### Socket/HTTP
+WebSocket: stateful, 長連線且雙向, client 和 server 可以主動互相傳輸數據, 主要用在直播, 股票軟體
+HTTP: stateless, 短連接request/response完即結束連線, client主動打給server, server被動回應response, 用於網站, 電商
 
-### UDP
+https://medium.com/enjoy-life-enjoy-coding/javascript-websocket-%E8%AE%93%E5%89%8D%E5%BE%8C%E7%AB%AF%E6%B2%92%E6%9C%89%E8%B7%9D%E9%9B%A2-34536c333e1b
+
+
+### TCP(三次握手/四次揮手)/UDP
+TCP如同打電話,確保資料有被傳輸到對方手中
+UDP如同廣播, 不管資料是否有傳輸到對方手中, 一直傳輸就對了
+
+
+https://nordvpn.com/zh-tw/blog/tcp-udp-bijiao/
+https://blog.csdn.net/weixin_43122090/article/details/105462015
+
+
+### 3次握手4次揮手
+#### 3次握手情境
+A: 喂, 聽得到嗎?
+Ｂ: 聽得到喔, 你聽得到嗎?
+A: 聽得到喔
+Q: 建立连接可以两次握手吗？为什么?
+Ans: 不行，两次握手无法保证Client正确接收第二次握手的报文（Server无法确认Client是否收到），也无法保证Client和Server之间成功互换初始序列号。
+
+#### 4次揮手情境
+A: 我要離職
+HR: 好的
+-----HR 辦理員工離職手續,或是處理員工先前未完成的資料-------
+HR: 資料都處理完囉, 你可以離職囉?
+A: 好的, 我離職囉
+
+Q1: 为什么不能把服务器发送的ACK和FIN合并起来，变成三次挥手（CLOSE_WAIT状态意义是什么）？
+ANS:因为服务器收到客户端断开连接的请求时，可能还有一些数据没有发完，这时先回复ACK，表示接收到了断开连接的请求。等到数据发完之后再发FIN，断开服务器到客户端的数据传送。
+
+Q2: 客户端TIME_WAIT状态的意义是什么？
+ANS: 第四次挥手时，客户端发送给服务器的ACK有可能丢失，TIME_WAIT状态就是用来重发可能丢失的ACK报文。如果Server没有收到ACK，就会重发FIN，如果Client在2*MSL的时间内收到了FIN，就会重新发送ACK并再次等待2MSL，防止Server没有收到ACK而不断重发FIN。 MSL(Maximum Segment Lifetime)，指一个片段在网络中最大的存活时间，2MSL就是一个发送和一个回复所需的最大时间。如果直到2MSL，Client都没有再次收到FIN，那么Client推断ACK已经被成功接收，则结束TCP连接。
 
 ### RabbitMQ/KafKaServer/ActiveMQ
 這種MQ的架構通常有五種模式(direct/worker/publisher(subscribe)/routing/topics)
@@ -324,8 +371,10 @@ https://ithelp.ithome.com.tw/m/articles/10271214
 
 # SSP Info
 ### System Analysis
+本家系統 
 每天: 3000w
-request/second: 3000w/24/3600 = 350
+平日: 350 QPS
+尖峰: 1400 QPS
 優化方式
 1. 加開8機器: 350/8 = 43 QPS(TPS)(request concurrency/responsive time)
 2. 內部程式優化
@@ -334,12 +383,77 @@ request/second: 3000w/24/3600 = 350
     - SQL partition table, less join and group by
     - NoSql prevent read write IO blocking
 
+momo platform: 
+11/11當周: 1450 QPS ~ 2050 QPS
+平日: 350 QPS
+為了應付雙11預估 25000 QPS 的尖峰, 系統不會 crash 掉, 且要維持在 200ms 以內回 response
+1. 程式面優化
+   - 從序列發改成併發
+   - single -> bulk 更改 API 架構
+   - 減少不必要的log, asynchrounous  logging 及增大 log thread pool
+   - 設置 timeout 100ms, 當 API 沒有回應就當作沒有廣告, release thread
+   - nginx/SpringBoot 設定 log rotate 避免 log 塞爆磁碟
+2. 系統面優化
+   - AWS 新增 ASG, 根據單台 EC2 QPS 決定 Scale out/in
+   - 怕瞬間流量導致系統 crash, nginx 限制 ratelimit 為 300QPS
+3. 報表面優化: 
+   - spark在幾台, 幾core, 多少numPartitions, 可以在 8hr 跑完一整天 ~1.5T log的時間(spark core == numPartitions 最快)
+   - spark 40 台 320cores, 8 小時內跑的完
+4. 用 k6 執行壓測確保系統運作正常
+      - 撰寫 k6 腳本
+      - 將 k6 用 docker build 成可執行的檔案
+      - 搭配 AWS ASG 用分散式壓測系統來達到 25000 QPS 壓測需求
+5. 監控系統是否正常
+   - spring 使用 micrometer 來記錄 metrics, 透過串接 prometheus server 以及 grafana 來監控系統各項狀態
+   - 使用 htop 等指令監控 CPU, load 等指標
+    
+
+
+### 系統升級
+- java 8 -> 17
+- spring boot 1.5 -> 2.7.4
+- spring 4 -> 5
+
+
+
+
 ### Aggregation optimization
 1. Split date range from one month to 1 day multiply 30, to reduce heap memory maximun usage
 2. PostGreSQL table partition to reduce the reading/write time, that divide table into multiple subtable according to each month
 3. Replace JPA with native SQL to persue faster SQL excecution time
 4. Loading cache in advance to avoid repeat Query
 5. Group by before join to avoid group by too much column in one time
+
+### Enhance Report Query
+1. table partitioned by month
+2. Group by before join to avoid group by too much column in one time
+3. create column index to enhance DB query speed
+
+
+
+###
+1. In charge of the Ad Supply Side Platform in a Real-Time Bidding (RTB) system, implementing multi- threading and concurrency  
+   techniques for issuing Ad requests to the Ad Exchange System.
+2. Achieved a significant system improvement, enhancing throughput from 50 to 260 QPS within 200ms bid Response time limit       
+   through sequential-to-concurrent transition, API interface reconstruction, and asynchronous logging to mitigate I/O blocking.
+3. Optimized data aggregation for reporting, storing eight times more data in PostgreSQL than the previous version. The data 
+   aggregation process now completes in 25% of the previous time, and queries takes in half the time.
+4. Managed the data pipeline, sending Ad event logs to Azure blob, transforming raw logs to aggregation logs using Spark, and
+   storing the data in PostgreSQL.
+5. Implemented Cassandra and Cache to reduce latency during high traffic periods. 
+6. Employed integration tests, unit tests, and K6 pressure tests to enhance code quality and validate business logic.
+7. Utilized Jenkins, Gradle for CI/CD, and Git with Sourcetree for version control.
+8. Monitored server systems using Prometheus and Grafana, while VisualVM was employed to observe heap memory usage.
+9. Conducted troubleshooting of abnormal data by analyzing trailing logs to identify and address root causes.
+10. Collaborated with users to align with business requirements, breaking down business logic into story 
+    tasks during Scrum sessions.
+
+
+# liquidbase, POI, JXLS, NGINX, Gradle, docker, AWS(S3, EC2, ELB), GCP(GA4, BidQuery)
+
+
+
+
 
 
 
