@@ -303,7 +303,14 @@ create index means create B-tree / B+ tree, that combine the relevent data to co
 ### Java HashSet HashMap ArrayList
 ArrayList: 底層為 array, default size = 10
 HashSet: 底層為HashMap
-HashMap: 底層為 Entry[], default size = 16, loading factor = 0.75, 當發生key hash完的hashCode相同發生collision時, 會看 Entry chain上的Entry的key值是否相同, 如果相同就update, 不相同則建一筆新的 Entry chain在後面
+HashMap: 底層為 Array[], default size = 16, loading factor = 0.75, 每個 ArrayIndex 對應到的 Value 為 List<Entry> 當發生key hash完的hashCode相同發生collision時, 會看 Entry chain上的Entry的key值是否相同, 如果相同就update, 不相同則建一筆新的 Entry chain在後面
+一个类如果覆写了equals()，就必须覆写hashCode()，并且覆写规则是：
+如果equals()返回true，则hashCode()返回值必须相等；
+如果equals()返回false，则hashCode()返回值尽量不要相等。
+
+-> 如果 key 沒有複寫 hashCode 的話會發生什麼事
+Java 中，所有類都繼承自 Object，而 Object 的 hashCode 方法預設返回的是物件的記憶體地址的哈希值, 如果兩個 key 雖然內容相同，但是不同的實例（即不同的內存地址），hashCode 方法會返回不同的值，導致 HashMap 認為它們是不同的鍵。
+
 ConcurrentHashMap: thread-safe, 他底層基本概念為分成好多個segment, 每個segment可視為hashMap, 不同thread操作不同segment, 所以為thread safe
 
 
@@ -313,7 +320,7 @@ https://blog.csdn.net/weixin_43122090/article/details/105462015 幾乎全包了
 ### 網路根據 OSI模型分七層／根據TCP/IP模型分四層, 其中 TCP/UDP是傳輸層, 而HTTP, HTTPS, SMTP, FTP則是基於傳輸層為基礎的應用層
 
 ### Socket/HTTP
-WebSocket: stateful, 長連線且雙向, client 和 server 可以主動互相傳輸數據, 主要用在直播, 股票軟體
+WebSocket: stateful, 長連線且雙向, client 和 server 可以主動互相傳輸數據, 主要用在直播, 股票軟體, 聊天室
 HTTP: stateless, 短連接request/response完即結束連線, client主動打給server, server被動回應response, 用於網站, 電商
 
 https://medium.com/enjoy-life-enjoy-coding/javascript-websocket-%E8%AE%93%E5%89%8D%E5%BE%8C%E7%AB%AF%E6%B2%92%E6%9C%89%E8%B7%9D%E9%9B%A2-34536c333e1b
@@ -349,16 +356,96 @@ ANS:因为服务器收到客户端断开连接的请求时，可能还有一些�
 Q2: 客户端TIME_WAIT状态的意义是什么？
 ANS: 第四次挥手时，客户端发送给服务器的ACK有可能丢失，TIME_WAIT状态就是用来重发可能丢失的ACK报文。如果Server没有收到ACK，就会重发FIN，如果Client在2*MSL的时间内收到了FIN，就会重新发送ACK并再次等待2MSL，防止Server没有收到ACK而不断重发FIN。 MSL(Maximum Segment Lifetime)，指一个片段在网络中最大的存活时间，2MSL就是一个发送和一个回复所需的最大时间。如果直到2MSL，Client都没有再次收到FIN，那么Client推断ACK已经被成功接收，则结束TCP连接。
 
-### RabbitMQ/KafKaServer/ActiveMQ
-這種MQ的架構通常有五種模式(direct/worker/publisher(subscribe)/routing/topics)
-1. RabbitMQ(most freqently used)
-https://kucw.github.io/blog/2020/11/rabbitmq/
-https://netfilx.github.io/spring-boot/8.springboot-rabbitmq/springboot-rabbitmq
+### 加密
+1. hash算法: MD5(不安全), sha-1, sha-256, sha-512
+   - digest = hash(input) 
+   - 基本上就是利用 hashFunc, 算出的 hash 值, 值越長發生 collision 機率越低越安全
+   - 使用 hash 要小心彩虹攻擊(可以透過查表直接反推原始的資料)
+   - 可以透過加鹽方式防止彩虹攻擊
+   - 用途: liquidbase MD5 checksum, passwordEncoder
+2. hmac
+   - digest = hash(salt + input)
+   - hash 算法 + 加鹽加強版
+   - 用途: outdoor config 透過 hmac 加密確保內容沒有被變造
+3. 對稱式加密
+   - 加解密都用同一把 key, 麻煩的是要如何確保 key 如何安全發送給對方
+   - 密钥长度由算法设计决定，AES的密钥长度是128/192/256 bits
+   - 使用对称加密算法需要指定算法名称、工作模式和填充模式。
+   - 用途: 解壓縮密碼之類的
+4. 非對稱式加密:
+   - 公私鑰成對, 公鑰公開, 私鑰不公開
+   - 公鑰加密, 私鑰解密, 常見加密方式為 RSA
+   - 非常慢, 所以通常會搭配對稱式加密加快速度
+     - 交換 AES key, 通常會使用非對稱式加密的方式, 使用公鑰加密 AES key 傳給對方, 對方在使用私鑰解讀出 AES key, 而後續 的文件加解密就用 AES 對稱式加密
+   - 用途: https...
+5. 數位簽章
+   - 私鑰產生素材簽章, 公鑰驗證簽章, 確保素材內容沒有被變造
+   - 用途: 廣告影片私鑰生成數位簽章, 公鑰驗證簽章, 確保影片沒有被變造
+6. 公私鑰保存不易, 容易洩漏, 且只要 key 有變就需要重新上版
+   - 可以使用 google KMS 來幫你保存公私鑰
 
--Worker模式
-在現在 microservice 很流行的情形下，如果有大量的 asynchronous job 要執行，通常就不會使用 Java 裡的 ThreadPool，而是會改使用這種 Worker 模式，讓許多台 node 可以一起幫忙做
-2. kafkaServer
-主要用於高流量, 因為其良好的 availability, scalability
+### StringBuilder 和 StringBuffer 的主要区别
+特性	   StringBuilder	              StringBuffer
+线程安全性	非线程安全，不支持多线程环境。	    线程安全，支持多线程环境。
+性能	   性能较高，因为没有线程安全的开销。	性能较低，因为有同步机制的开销。
+适用场景    单线程场景，性能是关键。	       多线程场景，需要线程安全。
+同步机制	不使用同步（synchronized）。	  使用同步，方法被 synchronized 修饰。
+
+
+
+### Fluentd + Azure Blob vs Kafka + Spark
+1. Fluentd + Azure Blob
+優點
+簡單易用: Fluentd 是一個輕量級的日誌收集工具，配置相對簡單，適合快速部署和使用。
+多種輸出支持: Fluentd 支持多種輸出插件，可以輕鬆地將日誌數據推送到多種存儲系統（如 Azure Blob、Elasticsearch、Kafka 等）。
+數據格式轉換: Fluentd 可以在收集日誌時進行數據格式轉換，方便將不同格式的日誌統一處理。
+低延遲: 對於小型系統，Fluentd 可以實現低延遲的日誌收集。
+缺點
+可擴展性: 在高併發的情況下，Fluentd 的性能可能會受到限制，特別是在處理大量日誌時。
+實時性: 雖然 Fluentd 可以實現相對實時的日誌收集，但在高負載下，可能會出現延遲。
+依賴於外部存儲: 將日誌推送到 Azure Blob 需要依賴網絡，可能會受到網絡延遲的影響。
+2. Kafka + Spark
+優點
+高可擴展性: Kafka 是一個分佈式的消息系統，能夠輕鬆擴展以處理大量的日誌數據，適合高併發的場景。
+實時處理: 使用 Spark Streaming 或 Structured Streaming，可以實現實時的數據處理和報表生成，減少延遲。
+容錯性: Kafka 提供了高可用性和容錯性，確保日誌數據不會丟失。
+靈活性: Kafka 可以與多種數據處理框架（如 Spark、Flink 等）集成，提供靈活的數據處理能力。
+缺點
+複雜性: Kafka 和 Spark 的架構相對複雜，需要更多的配置和管理，對於小型系統來說可能過於繁瑣。
+運維成本: 需要專門的運維人員來管理 Kafka 和 Spark 集群，增加了運維成本。
+學習曲線: 對於不熟悉這些技術的團隊，學習和掌握 Kafka 和 Spark 可能需要較長的時間。
+總結
+Fluentd + Azure Blob 更適合小型系統或需要快速部署的場景，因為它簡單易用且配置靈活。
+Kafka + Spark 更適合高併發、大數據量的場景，因為它提供了高可擴展性和實時處理能力，但同時也帶來了更高的複雜性和運維成本。
+選擇哪種架構取決於具體的業務需求、系統規模和團隊的技術能力。
+
+### jetty
+- NIO httpClient
+  //TODO:
+
+### 多線程
+1. 創建 thread-pool 方法, Executors 提供下列方法建立 threadPool, 必须调用shutdown()关闭 ExecutorService
+ExecutorService executor = Executors.FixedThreadPool(...)：线程数固定的线程池；
+CachedThreadPool：线程数根据任务动态调整的线程池；
+SingleThreadExecutor：仅单线程执行的线程池。
+ScheduledThreadPool: 定期反复执行，例如，每秒刷新证券价格。
+自定義 ThreadPool:
+```
+ExecutorService es = new ThreadPoolExecutor(
+    min,                // 核心執行緒數
+    max,                // 最大執行緒數
+    60L,                // 空閒執行緒存活時間
+    TimeUnit.SECONDS,   // 空閒時間的單位
+    new SynchronousQueue<Runnable>() // 任務隊列
+);
+```
+2. 任務隊列主要有下列這幾種(皆為 thread-safe <-> non thread-safe)    
+- 不允許排隊，高並發且任務執行快速：SynchronousQueue 適合短任務或不需要排隊的場景。 
+- 允許排隊，限制隊列長度：ArrayBlockingQueue 適合隊列長度固定、任務執行速度可控的場景。 <-> ArrayList
+- 無界排隊，低風險 OOM：LinkedBlockingQueue 適合長時間運行、低優先級的任務，但需避免 OOM。 <-> LinkedList
+- 需要優先級執行：PriorityBlockingQueue 適合根據業務優先級執行的場景。 <-> PriorityQueue
+- 需要延遲執行：DelayQueue 適合定時或延遲執行的場景。
+- 高效數據交換：LinkedTransferQueue 適合高吞吐量、直接交付任務的場景
 
 
 
@@ -366,6 +453,28 @@ https://netfilx.github.io/spring-boot/8.springboot-rabbitmq/springboot-rabbitmq
 Q: 面對高流量系統架構該如何設計?
 https://ithelp.ithome.com.tw/m/articles/10271214
 
+### Java 相關問題, 參考廖雪峰
+
+### Design Pattern，大話設計模式
+
+### 系統設計問題, 參考 github
+
+### 跟職缺有關的技術方面題目
+1. Spring cloud
+Spring Cloud 提供了涵盖服务注册与发现（Eureka）、服务调用（Feign）、配置管理（Config Server）、网关（Spring Cloud Gateway)、熔断与降级（Hystrix/Resilience4j）等功能。  对于小型团队或初学者来说，Spring Cloud 提供了简单易用的一站式微服务开发体验
+
+### RabbitMQ/KafKaServer/ActiveMQ
+這種MQ的架構通常有五種模式(direct/worker, exchange(publisher|subscribe(fanout)/routing(direct)/topics)
+1. RabbitMQ(most freqently used)
+https://kucw.github.io/blog/2020/11/rabbitmq/
+https://ithelp.ithome.com.tw/m/articles/10333620
+https://netfilx.github.io/spring-boot/8.springboot-rabbitmq/springboot-rabbitmq
+
+-Worker模式
+在現在 microservice 很流行的情形下，如果有大量的 asynchronous job 要執行，通常就不會使用 Java 裡的 ThreadPool，而是會改使用這種 Worker 模式，讓許多台 node 可以一起幫忙做
+2. kafkaServer
+主要用於高流量, 因為其良好的 availability, scalability
+//TODO:
 
 
 
@@ -411,7 +520,7 @@ momo platform:
 
 ### 系統升級
 - java 8 -> 17
-- spring boot 1.5 -> 2.7.4
+- spring boot 1.5 -> 2.7.
 - spring 4 -> 5
 
 
